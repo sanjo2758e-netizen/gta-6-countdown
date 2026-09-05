@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA 6 Release Countdown | Official Timer</title>
+    <style>
+        :root {
+            --bg-color: #0b0214;
+            --neon-pink: #ff007f;
+            --neon-cyan: #00f0ff;
+            --text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        /* Countdown Container */
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 100px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .time-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Ad Placement Area */
+        .ad-banner {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GTA VI Countdown</h1>
+    <p class="subtitle">Counting down to the official launch on November 19, 2026</p>
+
+    <div class="countdown-container">
+        <div class="time-box">
+            <span class="number" id="days">00</span>
+            <span class="label">Days</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="hours">00</span>
+            <span class="label">Hours</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="minutes">00</span>
+            <span class="label">Minutes</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="seconds">00</span>
+            <span class="label">Seconds</span>
+        </div>
+    </div>
+
+    <!-- PLACE YOUR ADSENSE CODE INSIDE THIS DIV -->
+    <div class="ad-banner">
+        Advertisement Placeholder (728x90 Banner)
+    </div>
+
+    <script>
+        // Set the official target date: November 19, 2026
+        const targetDate = new Date("November 19, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            // If the countdown is finished
+            if (difference < 0) {
+                document.querySelector(".countdown-container").innerHTML = "<h2>The Game is Out Now!</h2>";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            // Time math calculations
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Output the results to the display elements
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        // Run the timer instantly, then update every 1 second
+        updateCountdown();
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
