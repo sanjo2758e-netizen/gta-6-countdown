@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sanjo2758e-netizen.github.io/gta-6-countdown//sitemap.xml
+Sitemap: https://sanjo2758e-netizen.github.io/gta-6-countdown/sitemap.xml
